@@ -5,18 +5,21 @@ import './index.ess'
 
 :module
   export function onGenerate() {
-    var nums = Array(4)
-      .join('a,').split(',')
-      .map(n => Math.round(Math.max(1, Math.random() * 10)).toString())
-    this.setState({nums: nums});
+    var nums = {};
+    while (Object.keys(nums).length < 4) {
+      var num = Math.round(Math.max(1, Math.random() * 10)).toString();
+      if (!nums[num]) nums[num] = true;
+    }
+    nums = Object.keys(nums);
+    this.setState({nums: nums, numsStatus: {}, res: 0});
   }
   
   export function onChange(ev) {
     var val = ev.target.value;
-    var nums = this.state.nums;
+    var nums = this.state.nums.slice();
     var numsArr = val
       .replace(/\s/g, '')
-      .replace(/[\+\*\-\//]/g, ',')
+      .replace(/[\+\*\-\//\(\)]/g, ',')
       .split(',')
     var numsStatus = numsArr
       .reduce((acc, next, idx) => {
@@ -27,13 +30,12 @@ import './index.ess'
         }
         return acc;
       }, {});
-    var isUsingAllNums = Object.keys(numsStatus).length === 4;
-    var isCorrectLength = numsArr.length === 4;
-    var state = {numsStatus, isCorrectLength};
+    var state = {numsStatus};
     var res;
     try { res = eval(val) } catch(e) { res = '-' }
     if (res) state.res = res;
-    state.isCorrect = isCorrectLength && isUsingAllNums && res.toString() === '24';
+    var isUsingAllNums = Object.keys(numsStatus).length === 4;
+    state.isCorrect = isUsingAllNums && numsArr.length === 4 && res.toString() === '24';
     this.setState(state);
   }
   
@@ -53,4 +55,5 @@ input.App-input(onChange=this.onChange)
     var className = isActive ? 'is-active' : ''
     .App-nums-num(className=className)= n
 
-.App-result= state.res || '-'
+var className = state.isCorrect ? 'is-active' : ''
+.App-result(className=className)= state.res || '-'

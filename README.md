@@ -20,7 +20,7 @@ For example, the numbers 1, 2, 3, and 4 can be all multiplied together to equal 
 ## TODO
 
 - ~~Generate four numbers less than or equal to ten~~
-- Remove repeated numbers
+- ~~Remove repeated numbers~~
 - ~~Player inputs solution~~
 - ~~Computer checks solution~~
 

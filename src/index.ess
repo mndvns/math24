@@ -57,3 +57,6 @@ html
     margin 1rem
     padding 1rem
     justify-content center
+    &.is-active
+      background-color = __.color.green
+      color white
