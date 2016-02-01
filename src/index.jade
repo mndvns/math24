@@ -18,8 +18,7 @@ import './index.ess'
     var val = ev.target.value;
     var nums = this.state.nums.slice();
     var numsArr = val
-      .replace(/\s/g, '')
-      .replace(/[\+\*\-\//\(\)]/g, ',')
+      .replace(/[\+\*\-\//\(\)\s]/g, ',')
       .split(',')
     var numsStatus = numsArr
       .reduce((acc, next, idx) => {
@@ -46,7 +45,7 @@ import './index.ess'
 header.App-header
   h1.App-header-heading math24
   button.App-header-generate(onClick=this.onGenerate) generate
-  
+
 input.App-input(onChange=this.onChange autoFocus placeholder='Combine the numbers below to make 24')
 
 .App-nums
@@ -55,5 +54,6 @@ input.App-input(onChange=this.onChange autoFocus placeholder='Combine the number
     var className = isActive ? 'is-active' : ''
     .App-nums-num(className=className)= n
 
+var res = state.numsStatus && Object.keys(state.numsStatus).length && state.res || '-'
 var className = state.isCorrect ? 'is-active' : ''
-.App-result(className=className)= state.res || '-'
+.App-result(className=className)= res
