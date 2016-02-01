@@ -2,4 +2,4 @@ start:
 	@./node_modules/.bin/poe-ui-serve src
 
 prod:
-	@make start
+	@NODE_ENV=production ./node_modules/.bin/poe-ui-serve src --build ./build
