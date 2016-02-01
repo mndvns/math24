@@ -19,8 +19,8 @@ html
       text-align center
     &-generate
       align-self center
-      border = '1px solid ' + __.color.primary.darker
-      background-color = __.color.primary.dark
+      border = '1px solid ' + __.color.primary.dark
+      background-color = __.color.primary
       color white
       font-size .75rem
       padding .5rem 1rem
@@ -38,10 +38,10 @@ html
 
   &-nums
     display flex
-
     &-num
       align-self center
       border = '1px solid ' + __.color.silver
+      cursor default
       flex 1
       margin 1rem
       padding 1rem
@@ -51,6 +51,7 @@ html
         color white
 
   &-result
+    cursor default
     display flex
     font-size 3rem
     line-height 3rem

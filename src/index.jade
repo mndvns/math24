@@ -47,7 +47,7 @@ header.App-header
   h1.App-header-heading math24
   button.App-header-generate(onClick=this.onGenerate) generate
   
-input.App-input(onChange=this.onChange)
+input.App-input(onChange=this.onChange autoFocus placeholder='Combine the numbers below to make 24')
 
 .App-nums
   each n, i in state.nums
