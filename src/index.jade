@@ -16,12 +16,11 @@ import './index.ess'
     var nums = this.state.nums;
     var numsArr = val
       .replace(/\s/g, '')
-      .replace(/[\+\*\-\/]/g, ',')
+      .replace(/[\+\*\-\//]/g, ',')
       .split(',')
     var numsStatus = numsArr
       .reduce((acc, next, idx) => {
         for (var i = 0; i < nums.length; i++) {
-          console.log(next, nums[i])
           if (next !== nums[i]) continue;
           acc[acc[i] ? idx : i] = true;
           break;
