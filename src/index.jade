@@ -1,0 +1,57 @@
+import './index.ess'  
+
+:doc
+  @name App
+
+:module
+  export function onGenerate() {
+    var nums = Array(4)
+      .join('a,').split(',')
+      .map(n => Math.round(Math.max(1, Math.random() * 10)).toString())
+    this.setState({nums: nums});
+  }
+  
+  export function onChange(ev) {
+    var val = ev.target.value;
+    var nums = this.state.nums;
+    var numsArr = val
+      .replace(/\s/g, '')
+      .replace(/[\+\*\-\/]/g, ',')
+      .split(',')
+    var numsStatus = numsArr
+      .reduce((acc, next, idx) => {
+        for (var i = 0; i < nums.length; i++) {
+          console.log(next, nums[i])
+          if (next !== nums[i]) continue;
+          acc[acc[i] ? idx : i] = true;
+          break;
+        }
+        return acc;
+      }, {});
+    var isUsingAllNums = Object.keys(numsStatus).length === 4;
+    var isCorrectLength = numsArr.length === 4;
+    var state = {numsStatus, isCorrectLength};
+    var res;
+    try { res = eval(val) } catch(e) { res = '-' }
+    if (res) state.res = res;
+    state.isCorrect = isCorrectLength && isUsingAllNums && res.toString() === '24';
+    this.setState(state);
+  }
+  
+  export function componentDidMount() {
+    this.onGenerate();
+  }
+
+header.App-header
+  h1.App-header-heading math24
+  button.App-header-generate(onClick=this.onGenerate) generate
+  
+input.App-input(onChange=this.onChange)
+
+.App-nums
+  each n, i in state.nums
+    var isActive = state.numsStatus[i]
+    var className = isActive ? 'is-active' : ''
+    .App-nums-num(className=className)= n
+
+.App-result= state.res || '-'

@@ -1,0 +1,59 @@
+%ui-kit/skins/base/index.ess
+%ui-kit/skins/base/normalize.ess
+
+html
+  %ui-kit/skins/base/typography.ess
+
+.App
+  &-component
+    display flex
+    flex-direction column
+
+  &-header
+    display flex
+    padding 1rem
+    margin-left 5rem
+    &-heading
+      flex 1
+      font-size 1rem
+      text-align center
+    &-generate
+      align-self center
+      border = '1px solid ' + __.color.primary.darker
+      background-color = __.color.primary.dark
+      color white
+      font-size .75rem
+      padding .5rem 1rem
+      outline 0
+      &:hover
+        background-color = __.color.primary.light
+        cursor pointer
+
+  &-input
+    font-size .75rem
+    margin 0 1rem
+    padding 1rem
+    text-align center
+    outline 0
+
+  &-nums
+    display flex
+
+    &-num
+      align-self center
+      border = '1px solid ' + __.color.silver
+      flex 1
+      margin 1rem
+      padding 1rem
+      text-align center
+      &.is-active
+        background = __.color.primary
+        color white
+
+  &-result
+    display flex
+    font-size 3rem
+    line-height 3rem
+    margin 1rem
+    padding 1rem
+    justify-content center

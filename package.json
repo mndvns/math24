@@ -1,0 +1,23 @@
+{
+  "name": "math24",
+  "version": "0.1.0",
+  "description": "a fun math game for the browser",
+  "main": "src/index.jade",
+  "scripts": {
+    "start": "./node_modules/.bin/poe-ui-serve src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kwisatzheadache/math24.git"
+  },
+  "keywords": [
+    "math",
+    "game"
+  ],
+  "author": "Michael Andrew Vanasse <mail@mndvns.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/kwisatzheadache/math24",
+  "dependencies": {
+    "poe-ui-serve": "^0.1.2"
+  }
+}
