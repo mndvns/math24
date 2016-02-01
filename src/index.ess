@@ -25,6 +25,7 @@ html
       font-size .75rem
       padding .5rem 1rem
       outline 0
+      transition background-color .1s linear
       &:hover
         background-color = __.color.primary.light
         cursor pointer
@@ -38,16 +39,18 @@ html
 
   &-nums
     display flex
+    justify-content center
     &-num
       align-self center
+      background-color white
       border = '1px solid ' + __.color.silver
       cursor default
-      flex 1
       margin 1rem
-      padding 1rem
+      padding 1rem 1.75rem
       text-align center
+      transition background-color .1s linear
       &.is-active
-        background = __.color.primary
+        background-color = __.color.primary
         color white
 
   &-result
